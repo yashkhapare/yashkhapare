@@ -256,13 +256,13 @@
     />
 
     <video
-      src="/assets/project_ss/iot/mian_video.mp4 Recording 2026-01-30 202949.mp4"
+      src="/assets/project_ss/iot/mian_video.mp4"
       onclick="showVideo(this.src)"
       muted
     ></video>
 
     <video
-      src="/assets/project_ss/iot/iot.mp4 Recording 2026-01-30 202949.mp4"
+      src="/assets/project_ss/iot/iot.mp4"
       onclick="showVideo(this.src)"
       muted
     ></video>
@@ -315,13 +315,14 @@ When the temperature goes beyond the defined threshold, a buzzer provides an imm
     </section>
   </body>
 
-  <script>
+ <script>
   function showImage(src) {
     const img = document.getElementById("mainImage");
     const video = document.getElementById("mainVideo");
 
     video.pause();
     video.style.display = "none";
+    video.removeAttribute("controls");
 
     img.src = src;
     img.style.display = "block";
@@ -335,6 +336,7 @@ When the temperature goes beyond the defined threshold, a buzzer provides an imm
 
     video.src = src;
     video.style.display = "block";
+    video.setAttribute("controls", true);
     video.play();
   }
 </script>
