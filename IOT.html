@@ -1,88 +1,64 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Project Detail</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Detail</title>
 
-    <style>
-      /* ===== ROOT COLORS ===== */
-      :root {
-        --bg: #0a192f;
-        --card: #112240;
-        --accent: #ff6b35;
-        --text: #e6eef8;
-      }
+<style>
+/* ===== ROOT ===== */
+:root {
+  --bg: #0a192f;
+  --card: #112240;
+  --accent: #ff6b35;
+  --text: #e6eef8;
+  --muted: #8892b0;
+}
 
-      /* ===== BASE ===== */
-      body {
-        margin: 0;
-        font-family: Inter, Poppins, system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      /* ================= PROJECT DETAIL ================= */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
 
-      .project-detail {
-        padding: 120px 8% 60px;
-      }
+/* ================= PROJECT DETAIL ================= */
 
-      .project-detail-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        gap: 60px;
-        align-items: center;
-        background: var(--card);
-        padding: 50px;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      }
+.project-detail {
+  padding: 120px 8% 60px; /* navbar space */
+}
 
-      /* ===== IMAGE FRAME ===== */
-      .project-detail-image {
-        width: 100%;
-        max-width: 520px;
-        margin: 0 auto;
-        background: #000;
-        border-radius: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px;
-      }
+.project-detail-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+  background: var(--card);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
 
-      /* MAIN IMAGE */
-      .project-detail-image img {
-        width: 100%;
-        height: auto; /* 🔥 important */
-        max-height: 360px; /* limits size but no cut */
-        object-fit: contain; /* 🔥 NO cropping */
-        border-radius: 12px;
-        background: linear-gradient(#1e293b, #020617);
-        padding: 5px;
-      }
+/* ===== MEDIA ===== */
 
-      /* Thumbnails */
-      .thumbnail-row {
-        display: flex;
-        gap: 10px;
-      }
+.project-detail-image {
+  background: #000;
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-      .thumbnail-row img {
-        width: 80px;
-        height: 60px;
-        cursor: pointer;
-        opacity: 0.7;
-        border-radius: 6px;
-        transition: 0.3s;
-      }
-
-      .thumbnail-row img:hover {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-
-      /* MAIN MEDIA */
 .main-media img,
 .main-media video {
   width: 100%;
@@ -92,7 +68,14 @@
   background: linear-gradient(#1e293b, #020617);
 }
 
-/* Video thumbnail */
+/* Thumbnails */
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-row img,
 .thumbnail-row video {
   width: 80px;
   height: 60px;
@@ -103,234 +86,162 @@
   transition: 0.3s;
 }
 
+.thumbnail-row img:hover,
 .thumbnail-row video:hover {
   opacity: 1;
   transform: scale(1.05);
 }
 
-      /* ===== CONTENT ===== */
-      .project-detail-content {
-        display: flex;
-        flex-direction: column;
-      }
+/* ===== CONTENT ===== */
 
-      .project-detail-title {
-        font-size: 2.4rem;
-        margin-bottom: 2px;
-        color: var(--accent);
-        padding-top: 5%;
-      }
+.project-detail-content {
+  display: flex;
+  flex-direction: column;
+}
 
-      .project-detail-desc {
-        line-height: 1.9;
-        margin-bottom: 2px;
-      }
+.project-detail-title {
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
 
-      /* ===== BUTTONS ===== */
-      .project-detail-actions {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        padding-top: 5%;
-      }
+.project-detail-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
 
-      .btn {
-        padding: 10px 18px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        text-align: center;
-      }
+.project-detail-desc h3 {
+  margin: 18px 0 8px;
+  color: var(--text);
+}
 
-      .btn.ghost {
-        background: transparent;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-      }
+/* ================= RESPONSIVE ================= */
 
-      .project-detail-content hr {
-        border: none;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-        margin-top: 30px;
-      }
+@media (max-width: 992px) {
+  .project-detail-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
 
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 992px) {
-        .project-detail-container {
-          grid-template-columns: 1fr;
-          padding: 40px;
-        }
+@media (max-width: 600px) {
+  .project-detail {
+    padding: 100px 6% 40px;
+  }
 
-        .project-detail {
-          padding-top: 100px;
-        }
-      }
+  .project-detail-container {
+    padding: 24px;
+  }
 
-      @media (max-width: 700px) {
-        .project-detail-image img {
-          max-height: 240px;
-        }
+  .project-detail-title {
+    font-size: 1.8rem;
+  }
 
-        .thumbnail-row img {
-          width: 60px;
-          height: 45px;
-        }
-      }
+  .main-media img,
+  .main-media video {
+    max-height: 220px;
+  }
 
-      @media (max-width: 600px) {
-        .project-detail {
-          padding: 90px 6% 40px;
-        }
+  .thumbnail-row img,
+  .thumbnail-row video {
+    width: 60px;
+    height: 45px;
+  }
+}
+</style>
 
-        .project-detail-title {
-          font-size: 2rem;
-        }
+<!-- External Navbar CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
 
-        .project-detail-image {
-          height: 240px;
-        }
+<body>
 
-        .project-detail-actions {
-          flex-direction: column;
-        }
+<header class="navbar">
+  <div class="logo">Yash.dev</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="project.html"class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-        .btn {
-          width: 100%;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<section class="project-detail">
+  <div class="project-detail-container">
 
-  <body>
-    <header class="navbar">
-      <div class="logo">Yash.dev</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="project.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
-
-    <section class="project-detail">
-      <div class="project-detail-container">
-        <!-- LEFT: IMAGE GALLERY -->
-        <div class="project-detail-image">
-
-  <!-- MAIN DISPLAY -->
-  <div class="main-media">
-    <img
-      id="mainImage"
-      src="assets/img/iot_main.png"
-      alt="Project Image"
-    />
-
-    <video
-      id="mainVideo"
-      controls
-      style="display: none;"
-    ></video>
-  </div>
-
-  <!-- THUMBNAILS -->
-  <div class="thumbnail-row">
-    <img
-      src="assets/img/iot_main.png"
-      onclick="showImage(this.src)"
-    />
-
-    
-
-    <img
-      src="assets/img/iot_diagram.png"
-      onclick="showImage(this.src)"
-    />
-
-    <img
-      src="assets/img/iot_output.png"
-      onclick="showImage(this.src)"
-    />
-
-    <video
-      src="assets/img/iot_mian_video.mp4"
-      onclick="showVideo(this.src)"
-      muted
-    ></video>
-
-    <video
-      src="assets/img/iot.mp4"
-      onclick="showVideo(this.src)"
-      muted
-    ></video>
-  </div>
-
-</div>
-
-        </div>
-
-        <!-- RIGHT: CONTENT -->
-        <div class="project-detail-content">
-          <h2 class="project-detail-title">Arduino-based industrial temperature monitor</h2>
-<br>
-          <p class="project-detail-desc">
-           <h3>📖 Description</h3>
-<p>
-The Industrial Temperature Monitoring System is a simple system designed to measure and monitor temperature in industrial environments. It continuously checks the temperature and alerts the user when it exceeds a predefined limit, helping to prevent overheating and possible damage.
-
-The system is built using an Arduino Uno and a K-type thermocouple (MAX6675) for accurate temperature sensing. Temperature readings and the set threshold are displayed on a 16×2 LCD using an I2C module. A 4×4 keypad allows the user to easily set or modify the temperature limit as required.
-</p>
-
-<p>
-When the temperature goes beyond the defined threshold, a buzzer provides an immediate alert, and a GSM800L module sends an SMS or makes a call to notify the user remotely. The project is low-cost, easy to use, and suitable for basic industrial safety applications, with future scope for features like data logging or mobile app connectivity.
-</p>
-<br>
-<h3>🛠 Tech Stack</h3>
-<p>
-<strong>Controller:</strong> Arduino Uno <br>
-<strong>Sensor:</strong> K-type Thermocouple (MAX6675) <br>
-<strong>Display:</strong> 16×2 LCD with I2C <br>
-<strong>Input:</strong> 4×4 Keypad <br>
-<strong>Alert:</strong> Buzzer, GSM800L Module
-</p>
-
-
-
-          <hr />
-        </div>
+    <!-- LEFT -->
+    <div class="project-detail-image">
+      <div class="main-media">
+        <img id="mainImage" src="assets/img/iot_main.png" alt="Project Image">
+        <video id="mainVideo" controls style="display:none"></video>
       </div>
 
-      
-    </section>
-  </body>
+      <div class="thumbnail-row">
+        <img src="assets/img/iot_main.png" onclick="showImage(this.src)">
+        <img src="assets/img/iot_diagram.png" onclick="showImage(this.src)">
+        <img src="/assets/img/iot_output.png" onclick="showImage(this.src)">
+        <video src="assets/img/iot.mp4" onclick="showVideo(this.src)" muted></video>
+        <video src="assets/img/iot_mian_video.mp4" onclick="showVideo(this.src)" muted></video>
+      </div>
+    </div>
 
- <script>
-  function showImage(src) {
-    const img = document.getElementById("mainImage");
-    const video = document.getElementById("mainVideo");
+    <!-- RIGHT -->
+    <div class="project-detail-content">
+      <h2 class="project-detail-title">
+        Arduino-based Industrial Temperature Monitor
+      </h2>
 
-    video.pause();
-    video.style.display = "none";
-    video.removeAttribute("controls");
+      <div class="project-detail-desc">
+        <h3>📖 Description</h3>
+        <p>
+          The Industrial Temperature Monitoring System is designed to continuously
+          monitor temperature in industrial environments and alert users when it
+          exceeds a predefined limit.
+        </p>
 
-    img.src = src;
-    img.style.display = "block";
-  }
+        <p>
+          It uses an Arduino Uno with a K-type thermocouple (MAX6675) for accurate
+          sensing. A 16×2 I2C LCD displays live temperature and threshold values,
+          while a 4×4 keypad allows easy configuration.
+        </p>
 
-  function showVideo(src) {
-    const img = document.getElementById("mainImage");
-    const video = document.getElementById("mainVideo");
+        <p>
+          When temperature crosses the limit, a buzzer alerts locally and a GSM800L
+          module can notify the user remotely via SMS or call.
+        </p>
 
-    img.style.display = "none";
+        <h3>🛠 Tech Stack</h3>
+        <p>
+          <strong>Controller:</strong> Arduino Uno <br>
+          <strong>Sensor:</strong> K-type Thermocouple (MAX6675) <br>
+          <strong>Display:</strong> 16×2 LCD (I2C) <br>
+          <strong>Input:</strong> 4×4 Keypad <br>
+          <strong>Alert:</strong> Buzzer, GSM800L
+        </p>
+      </div>
+    </div>
 
-    video.src = src;
-    video.style.display = "block";
-    video.setAttribute("controls", true);
-    video.play();
-  }
+  </div>
+</section>
+
+<script>
+function showImage(src) {
+  const img = document.getElementById("mainImage");
+  const video = document.getElementById("mainVideo");
+  video.pause();
+  video.style.display = "none";
+  img.src = src;
+  img.style.display = "block";
+}
+
+function showVideo(src) {
+  const img = document.getElementById("mainImage");
+  const video = document.getElementById("mainVideo");
+  img.style.display = "none";
+  video.src = src;
+  video.style.display = "block";
+  video.play();
+}
 </script>
 
+</body>
 </html>

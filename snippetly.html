@@ -1,88 +1,64 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Project Detail</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Detail</title>
 
-    <style>
-      /* ===== ROOT COLORS ===== */
-      :root {
-        --bg: #0a192f;
-        --card: #112240;
-        --accent: #ff6b35;
-        --text: #e6eef8;
-      }
+<style>
+/* ===== ROOT ===== */
+:root {
+  --bg: #0a192f;
+  --card: #112240;
+  --accent: #ff6b35;
+  --text: #e6eef8;
+  --muted: #8892b0;
+}
 
-      /* ===== BASE ===== */
-      body {
-        margin: 0;
-        font-family: Inter, Poppins, system-ui, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-      }
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-      /* ================= PROJECT DETAIL ================= */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
 
-      .project-detail {
-        padding: 120px 8% 60px;
-      }
+/* ================= PROJECT DETAIL ================= */
 
-      .project-detail-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        gap: 60px;
-        align-items: center;
-        background: var(--card);
-        padding: 50px;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      }
+.project-detail {
+  padding: 120px 8% 60px;
+}
 
-      /* ===== IMAGE FRAME ===== */
-      .project-detail-image {
-        width: 100%;
-        max-width: 520px;
-        margin: 0 auto;
-        background: #000;
-        border-radius: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        padding: 12px;
-      }
+.project-detail-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: flex-start;
+  background: var(--card);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
 
-      /* MAIN IMAGE */
-      .project-detail-image img {
-        width: 100%;
-        height: auto; /* 🔥 important */
-        max-height: 360px; /* limits size but no cut */
-        object-fit: contain; /* 🔥 NO cropping */
-        border-radius: 12px;
-        background: linear-gradient(#1e293b, #020617);
-        padding: 5px;
-      }
+/* ===== MEDIA ===== */
 
-      /* Thumbnails */
-      .thumbnail-row {
-        display: flex;
-        gap: 10px;
-      }
+.project-detail-image {
+  background: #000;
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-      .thumbnail-row img {
-        width: 80px;
-        height: 60px;
-        cursor: pointer;
-        opacity: 0.7;
-        border-radius: 6px;
-        transition: 0.3s;
-      }
-
-      .thumbnail-row img:hover {
-        opacity: 1;
-        transform: scale(1.05);
-      }
-
-      /* MAIN MEDIA */
 .main-media img,
 .main-media video {
   width: 100%;
@@ -92,8 +68,14 @@
   background: linear-gradient(#1e293b, #020617);
 }
 
-/* Video thumbnail */
-.thumbnail-row video {
+/* Thumbnails */
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnail-row img {
   width: 80px;
   height: 60px;
   object-fit: cover;
@@ -103,221 +85,171 @@
   transition: 0.3s;
 }
 
-.thumbnail-row video:hover {
+.thumbnail-row img:hover {
   opacity: 1;
   transform: scale(1.05);
 }
 
-      /* ===== CONTENT ===== */
-      .project-detail-content {
-        display: flex;
-        flex-direction: column;
-      }
+/* ===== CONTENT ===== */
 
-      .project-detail-title {
-        font-size: 2.4rem;
-        margin-bottom: 2px;
-        color: var(--accent);
-        padding-top: 5%;
-      }
+.project-detail-content {
+  display: flex;
+  flex-direction: column;
+}
 
-      .project-detail-desc {
-        line-height: 1.9;
-        margin-bottom: 2px;
-      }
+.project-detail-title {
+  font-size: 2.4rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
 
-      /* ===== BUTTONS ===== */
-      .project-detail-actions {
-        display: flex;
-        gap: 14px;
-        flex-wrap: wrap;
-        margin-bottom: 20px;
-        padding-top: 5%;
-      }
+.project-detail-desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
 
-      .btn {
-        padding: 10px 18px;
-        border-radius: 8px;
-        background: var(--accent);
-        color: #fff;
-        text-decoration: none;
-        font-weight: 500;
-        text-align: center;
-      }
+.project-detail-desc h3 {
+  margin: 18px 0 8px;
+  color: var(--text);
+}
 
-      .btn.ghost {
-        background: transparent;
-        border: 1px solid var(--accent);
-        color: var(--accent);
-      }
+/* Buttons */
+.project-detail-actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 
-      .project-detail-content hr {
-        border: none;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.1);
-        margin-top: 30px;
-      }
+.btn {
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-      /* ===== RESPONSIVE ===== */
-      @media (max-width: 992px) {
-        .project-detail-container {
-          grid-template-columns: 1fr;
-          padding: 40px;
-        }
+.btn.ghost {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
 
-        .project-detail {
-          padding-top: 100px;
-        }
-      }
+/* ================= RESPONSIVE ================= */
 
-      @media (max-width: 700px) {
-        .project-detail-image img {
-          max-height: 240px;
-        }
+@media (max-width: 992px) {
+  .project-detail-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
 
-        .thumbnail-row img {
-          width: 60px;
-          height: 45px;
-        }
-      }
+@media (max-width: 600px) {
+  .project-detail {
+    padding: 100px 6% 40px;
+  }
 
-      @media (max-width: 600px) {
-        .project-detail {
-          padding: 90px 6% 40px;
-        }
+  .project-detail-container {
+    padding: 24px;
+  }
 
-        .project-detail-title {
-          font-size: 2rem;
-        }
+  .project-detail-title {
+    font-size: 1.8rem;
+  }
 
-        .project-detail-image {
-          height: 240px;
-        }
+  .main-media img,
+  .main-media video {
+    max-height: 220px;
+  }
 
-        .project-detail-actions {
-          flex-direction: column;
-        }
+  .thumbnail-row img {
+    width: 60px;
+    height: 45px;
+  }
 
-        .btn {
-          width: 100%;
-        }
-      }
-    </style>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+  .project-detail-actions {
+    flex-direction: column;
+  }
 
-  <body>
-    <header class="navbar">
-      <div class="logo">Yash.dev</div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="project.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </header>
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+</style>
 
-    <section class="project-detail">
-      <div class="project-detail-container">
-        <!-- LEFT: IMAGE GALLERY -->
-        <div class="project-detail-image">
+<!-- Navbar CSS -->
+<link rel="stylesheet" href="style.css">
+</head>
 
-  <!-- MAIN DISPLAY -->
-  <div class="main-media">
-    <img
-      id="mainImage"
-      src="assets/img/snip_main_page.png"
-      alt="Project Image"
-    />
+<body>
 
-    <video
-      id="mainVideo"
-      controls
-      style="display: none;"
-    ></video>
-  </div>
+<header class="navbar">
+  <div class="logo">Yash.dev</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="project.html" class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- THUMBNAILS -->
-  <div class="thumbnail-row">
-    <img
-      src="assets/img/snip_main_page.png"
-      onclick="showImage(this.src)"
-    />
+<section class="project-detail">
+  <div class="project-detail-container">
 
-    <img
-      src="assets/img/snip_droper_page.png"
-      onclick="showImage(this.src)"
-    />
-
-    <img
-      src="assets/img/snip_About_page.png"
-      onclick="showImage(this.src)"
-    />
-
-    <!-- <video
-      src="/assets/project_ss/music_downloader/Screen Recording 2026-01-30 202949.mp4"
-      onclick="showVideo(this.src)"
-      muted
-    ></video> -->
-  </div>
-
-</div>
-
-        </div>
-
-        <!-- RIGHT: CONTENT -->
-        <div class="project-detail-content">
-          <h2 class="project-detail-title">Snippetly</h2>
-
-          <p class="project-detail-desc">
-           <h3>📖 Description </h3>
-             Snippetly is a simple
-            and secure web application that allows users to create, save, and
-            share code snippets online. It provides an intuitive interface for
-            pasting code, selecting programming languages, and managing snippets
-            efficiently. Built using Flask, HTML, CSS, and JavaScript, the
-            application focuses on speed, usability, and clean design. Snippetly
-            helps developers, students, and teams quickly share code without the
-            need for complex setup, making collaboration and code storage easier
-            and more accessible. 
-            <br><br>
-
-             <h3>🛠 Tech Stack</h3> 
-             Backend: Flask (Python) <br>
-              Frontend:HTML, CSS, JavaScript <br>
-              Database: SQLite
-          </p>
-
-          <div class="project-detail-actions">
-            <a href="https://github.com/yashkhapare/Snippetly---pastebin.git" class="btn" target="_blank">GitHub</a>
-          </div>
-          <hr>
-        </div>
+    <!-- LEFT -->
+    <div class="project-detail-image">
+      <div class="main-media">
+        <img id="mainImage" src="assets/img/snip_main_page.png">
+        <video id="mainVideo" controls style="display:none"></video>
       </div>
-    </section>
-  </body>
 
-  <script>
-  function showImage(src) {
-    const img = document.getElementById("mainImage");
-    const video = document.getElementById("mainVideo");
+      <div class="thumbnail-row">
+        <img src="assets/img/snip_main_page.png" onclick="showImage(this.src)">
+        <img src="assets/img/snip_droper_page.png" onclick="showImage(this.src)">
+        <img src="assets/img/snip_About_page.png" onclick="showImage(this.src)">
+      </div>
+    </div>
 
-    video.pause();
-    video.style.display = "none";
+    <!-- RIGHT -->
+    <div class="project-detail-content">
+      <h2 class="project-detail-title">Snippetly</h2>
 
-    img.src = src;
-    img.style.display = "block";
-  }
+      <div class="project-detail-desc">
+        <h3>📖 Description</h3>
+        <p>
+          Snippetly is a secure and lightweight web application for creating,
+          saving, and sharing code snippets. It offers syntax-aware storage,
+          language selection, and a clean UI for fast collaboration.
+        </p>
 
-  function showVideo(src) {
-    const img = document.getElementById("mainImage");
-    const video = document.getElementById("mainVideo");
+        <h3>🛠 Tech Stack</h3>
+        <p>
+          Backend: Flask (Python)<br>
+          Frontend: HTML, CSS, JavaScript<br>
+          Database: SQLite
+        </p>
+      </div>
 
-    img.style.display = "none";
+      <div class="project-detail-actions">
+        <a href="https://github.com/yashkhapare/Snippetly---pastebin.git"
+           class="btn" target="_blank">GitHub</a>
+      </div>
+    </div>
 
-    video.src = src;
-    video.style.display = "block";
-    video.play();
-  }
+  </div>
+</section>
+
+<script>
+function showImage(src) {
+  const img = document.getElementById("mainImage");
+  const video = document.getElementById("mainVideo");
+  video.pause();
+  video.style.display = "none";
+  img.src = src;
+  img.style.display = "block";
+}
 </script>
 
+</body>
 </html>
