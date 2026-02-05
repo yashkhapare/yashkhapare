@@ -2,7 +2,7 @@
   --bg: #0A192F;
   --card: #112240;
   --accent: #FF6B35;
-  --muted: #8892B0;
+  --muted: #aab0c3;
   --text: #E6EEF8;
   --white: #ffffff;
 }
@@ -18,6 +18,7 @@
 html, body {
   width: 100%;
   overflow-x: hidden;
+  
 }
 
 img {
@@ -447,7 +448,7 @@ h2 {
 
 .overlay h3 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--accent);
 }
 
