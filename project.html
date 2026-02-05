@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Latest Projects</title>
 
 <style>
@@ -14,265 +15,145 @@
   --text: #E6EEF8;
 }
 
-/* ===== GLOBAL RESET ===== */
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-}
-
 body {
   font-family: Inter, Poppins, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
+  padding-top: 90px;
 }
+/* ================= SECTION ================= */
 
-/* ===============================
-   NAVBAR (MERGED & RESPONSIVE)
-================================ */
-
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 80px;
-  padding: 0 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 25, 47, 0.9),
-    rgba(10, 25, 47, 0.6)
-  );
-  backdrop-filter: blur(6px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: var(--accent);
-}
-
-.navbar nav {
-  display: flex;
-  align-items: center;
-}
-
-.navbar nav a {
-  font-size: 18px;
-  margin-left: 30px;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 700;
-  transition: color 0.3s ease;
-}
-
-.navbar nav a:hover,
-.navbar nav a.active {
-  color: var(--accent);
-}
-
-/* ===============================
-   NAVBAR – TABLETS
-================================ */
-@media (max-width: 900px) {
-  .navbar {
-    padding: 0 24px;
-    height: 72px;
-  }
-
-  .navbar nav a {
-    font-size: 17px;
-    margin-left: 18px;
-  }
-}
-
-/* ===============================
-   NAVBAR – MOBILE
-================================ */
-@media (max-width: 600px) {
-  .navbar {
-    height: auto;
-    padding: 12px 16px;
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    font-size: 24px;
-  }
-
-  .navbar nav {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 10px;
-  }
-
-  .navbar nav a {
-    font-size: 15px;
-    margin: 6px 10px;
-  }
-}
-
-
-/* ===== SECTION ===== */
-section {
-  padding: 120px 6% 80px;
-  
+.latest-projects {
+  max-width: 1200px;
   margin: auto;
+  padding: 60px 16px 40px;
 }
 
-/* ===== TITLE ===== */
 .project-title {
   text-align: center;
-  font-size: 2.4rem;
-  margin-bottom: 50px;
+  font-size: 1.8rem;
+  margin-bottom: 40px;
 }
 
 .project-title span {
   color: var(--accent);
 }
 
-/* ===== GRID ===== */
+/* ================= GRID ================= */
+
 .projects-grid {
   display: grid;
-   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 30px;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  gap: 22px;
 }
 
-/* ===== PROJECT CARD ===== */
+/* ================= CARD ================= */
+
 .project-box {
-  position: relative;
   background: var(--card);
   border-radius: 18px;
   overflow: hidden;
+  position: relative;
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
 /* IMAGE */
 .project-box img {
   width: 100%;
-  display: block;
-  height: 230px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  display: block;
 }
 
-.project-box:hover img {
-  transform: scale(1.08);
-}
-
-/* ===== OVERLAY ===== */
+/* OVERLAY (always visible on mobile) */
 .overlay {
-  position: absolute;
-  inset: 0;
+  padding: 18px;
   background: linear-gradient(
     to top,
     rgba(10,25,47,0.95),
-    rgba(10,25,47,0.35)
+    rgba(10,25,47,0.6)
   );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 22px;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.project-box:hover .overlay {
-  opacity: 1;
 }
 
 .overlay h3 {
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   margin-bottom: 6px;
 }
 
 .overlay p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
-/* LINK BUTTON */
+/* BUTTON */
 .overlay a {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   background: var(--accent);
   border-radius: 50%;
   display: grid;
   place-items: center;
   color: #fff;
   text-decoration: none;
-  font-size: 1.1rem;
-  transition: transform 0.2s;
+  font-size: 1rem;
 }
 
-.overlay a:hover {
-  transform: scale(1.1);
-}
+/* ================= TABLET ================= */
 
-.latest-projects {
-  max-width: 1200px;
-  margin: auto;
-}
+@media (min-width: 768px) {
 
+  body {
+    padding-top: 80px;
+  }
 
-/* ===== RESPONSIVE ===== */
+  .project-title {
+    font-size: 2.2rem;
+  }
 
-@media (max-width: 1024px) {
   .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
-/* Tablets */
-@media (max-width: 900px) {
-  
 
-  section {
-    padding-top: 110px;
+  /* Hover overlay only for non-touch */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-box:hover .overlay {
+    opacity: 1;
   }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
+/* ================= DESKTOP ================= */
 
-  section.latest-projects {
-    padding: 100px 16px 40px;
-  }
-
+@media (min-width: 1024px) {
 
   .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .project-box img {
-    max-height: 200px;
-    height: auto;
-  }
+  
+  
 }
-
-
-
-
 </style>
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-  <header class="navbar">
+<header class="navbar">
   <div class="logo">Yash.dev</div>
   <nav>
     <a href="index.html">Home</a>
@@ -281,51 +162,35 @@ section {
   </nav>
 </header>
 
-<section id="projects" class="latest-projects">
+<section class="latest-projects">
   <h2 class="project-title">Latest <span>Projects</span></h2>
 
   <div class="projects-grid">
 
-    <!-- PROJECT 1 -->
     <div class="project-box">
-      <img src="assets/img/music_main.png" alt="Project Title">
-
+      <img src="assets/img/music_main.png">
       <div class="overlay">
-        <h3>Music downloader</h3>
+        <h3>Music Downloader</h3>
         <p>Flask-based online music search app</p>
-
-        <div style="display:grid;">
-          <a href="music_downloader.html" >↗</a>
-        </div>
+        <a href="/music_downloader.html">↗</a>
       </div>
     </div>
 
-    <!-- PROJECT 2 -->
     <div class="project-box">
-      <img src="assets/img/snip_main_page.png" alt="Project Title">
-
+      <img src="assets/img/snip_main_page.png">
       <div class="overlay">
         <h3>Snippetly</h3>
         <p>Secure code snippet sharing web app</p>
-
-        <div style="display:grid;">
-          <a href="snippetly.html" target="_self">↗</a>
-          
-        </div>
+        <a href="/snippetly.html">↗</a>
       </div>
     </div>
 
-    <!-- Project 3 -->
-     <div class="project-box">
-      <img src="assets/img/iot_main.png" alt="Project Title">
-
+    <div class="project-box">
+      <img src="assets/img/iot_main.png">
       <div class="overlay">
-        <h3>Industrial Tempreature Monitoring system</h3>
-        <p>Arduino-based industrial temperature monitor</p>
-
-        <div style="display:flex;">
-          <a href="IOT.html" >↗</a>
-        </div>
+        <h3>Industrial Temperature Monitoring</h3>
+        <p>Arduino-based industrial temperature system</p>
+        <a href="/IOT.html">↗</a>
       </div>
     </div>
 
